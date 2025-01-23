@@ -48,7 +48,7 @@ features = ["json","rustls-tls"]
 
 [dependencies.serde]
 features = ["derive"]
-version = "^1.0.213"
+version = "^1.0.217"
 
 [dependencies.tokio]
 features = ["full"]
