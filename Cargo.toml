@@ -11,7 +11,7 @@ flate2 = "^1.0.34"
 is_executable = "^1.0.4"
 nom = "^7.1.1"
 rusty-leveldb = "^3.0.0"
-serde_json = "^1.0.132"
+serde_json = "^1.0.137"
 
 steam_shortcuts_util = "^1.1.8"
 steamgriddb_api = "^0.3.1"
