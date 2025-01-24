@@ -37,7 +37,7 @@ version = "^0.3.31"
 
 [dependencies.image]
 features = ["png","webp","jpeg"]
-version ="^0.25.4"
+version ="^0.25.5"
 #git = "https://github.com/PhilipK/image"
 #rev = "55a668409b28fedcd6cd3dea25ae1b3cc9d25ec5"
 
