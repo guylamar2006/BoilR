@@ -5,7 +5,7 @@ version = "1.9.6"
 
 [dependencies]
 base64 = "^0.22.1"
-config = "^0.15.6"
+config = "^0.15.7"
 copypasta = "^0.10.1"
 flate2 = "^1.0.35"
 is_executable = "^1.0.4"
