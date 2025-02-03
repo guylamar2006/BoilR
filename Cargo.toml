@@ -66,7 +66,7 @@ sqlite = "^0.36.1"
 roxmltree = "^0.20.0"
 
 [target.'cfg(not(windows))'.dependencies]
-wayland-cursor = "0.31.7"
+wayland-cursor = "0.31.8"
 
 [features]
 # This feature is enabled when building for a flatpak environment
