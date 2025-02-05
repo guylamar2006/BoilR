@@ -20,7 +20,7 @@ eyre = "^0.6.12"
 color-eyre = "^0.6.3"
 dyn-clone = "^1.0.17"
 time = {version="^0.3.37", features = ["formatting"]}
-egui_extras = { version = "0.30.0", features = ["all_loaders"] }
+egui_extras = { version = "0.31.0", features = ["all_loaders"] }
 
 [dependencies.dashmap]
 features = ["serde"]
