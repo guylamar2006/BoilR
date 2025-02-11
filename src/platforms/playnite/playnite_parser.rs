@@ -5,7 +5,7 @@ use nom::{
     },
     multi::many0,
     IResult,
-    Aschar,
+    AsChar,
     Parser,
 };
 
