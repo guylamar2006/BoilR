@@ -5,7 +5,8 @@ use nom::{
     },
     multi::many0,
     IResult,
-    AsChar,
+    Aschar,
+    Parser,
 };
 
 pub(crate) struct NamesAndId {
@@ -15,7 +16,7 @@ pub(crate) struct NamesAndId {
 }
 
 pub(crate) fn parse_db(content: &[u8]) -> nom::IResult<&[u8], Vec<NamesAndId>> {
-    many0(parse_game)(content)
+    many0(parse_game).parse(content)
 }
 
 fn parse_game(i: &[u8]) -> nom::IResult<&[u8], NamesAndId> {
