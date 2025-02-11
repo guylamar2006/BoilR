@@ -277,10 +277,10 @@ fn create_style(style: &mut egui::Style) {
     style.visuals.panel_fill = BACKGROUND_COLOR;
     style.visuals.override_text_color = Some(TEXT_COLOR);
     style.visuals.widgets.noninteractive.rounding = Rounding {
-        ne: 0.0,
-        nw: 0.0,
-        se: 0.0,
-        sw: 0.0,
+        ne: 0,
+        nw: 0,
+        se: 0,
+        sw: 0,
     };
     style.visuals.faint_bg_color = PURLPLE;
     style.visuals.extreme_bg_color = EXTRA_BACKGROUND_COLOR;
