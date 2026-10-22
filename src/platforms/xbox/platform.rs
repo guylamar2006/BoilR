@@ -2,9 +2,9 @@ use serde::Serialize;
 
 use crate::platforms::{load_settings, FromSettingsString, GamesPlatform};
 use serde::Deserialize;
-use std::io::Error;
+use std::io::{Error, Write};
 use std::path::{Path, PathBuf};
-use std::process::Command;
+use std::process::{Command, Stdio};
 use steam_shortcuts_util::Shortcut;
 
 use crate::platforms::ShortcutToImport;
@@ -33,8 +33,7 @@ impl GamesPlatform for XboxPlatForm {
     }
 
     fn get_shortcut_info(&self) -> eyre::Result<Vec<crate::platforms::ShortcutToImport>> {
-        let command = include_str!("./xbox_games.ps1");
-        let res = run_powershell_command(command)?;
+        let res = run_powershell_command()?;
         let apps: Vec<AppInfo> = serde_json::from_str(&res)?;
         let windows_dir = std::env::var("WinDir").unwrap_or("C:\\Windows".to_string());
         let explorer = Path::new(&windows_dir)
@@ -170,8 +169,19 @@ impl Kind {
     }
 }
 
-fn run_powershell_command(cmd: &str) -> Result<String, Error> {
-    let output = Command::new("powershell").arg("/c").arg(cmd).output()?;
+fn run_powershell_command() -> Result<String, Error> {
+    let mut powershell = Command::new("powershell")
+        .args(["-NoProfile", "-NonInteractive", "-Command", "-"])
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn()?;
+    powershell
+        .stdin
+        .take()
+        .expect("PowerShell stdin was configured")
+        .write_all(include_str!("./xbox_games.ps1").as_bytes())?;
+    let output = powershell.wait_with_output()?;
 
     match output.status.success() {
         true => Ok(String::from_utf8_lossy(&output.stdout).to_string()),
